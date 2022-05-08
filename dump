@@ -1,0 +1,629 @@
+------------------------------------------------------------------------
+
+Name: AVState
+Id: 0x11
+Length: 0 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
+
+------------------------------------------------------------------------
+
+Traffic Light Challenge
+------------------------------------------------------------------------
+
+Name: TrafficSignalHeads
+Id: 0x30
+Length: 3 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- Current_Signal_Head_Count
++-- Observation_Time_of_Hour
+
+------------------------------------------------------------------------
+
+Name: TrafficSignalHead_TrackA
+Id: 0x31
+Length: 7 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- SignalObjectID
++-- Height_Above_Ground 
++-- LongPos
++-- LatPos 
++-- Confidence
++-- Signal_Head_Type
++-- IllumLtNone
++-- IllumLtRedBall
++-- IllumLtYellowBall
++-- IllumLtGreenBall
++-- IllumLtFlshngRedBall
++-- IllumLtFlshngYellowBall
++-- IllumLtRedLeftArrow
++-- IllumLtYellowLeftArrow
++-- IllumLtGreenLeftArrow
++-- IllumLtFlshngRedLeftArrow
++-- IllumLtFlshngYellowLeftArrow
++-- IllumLtRedRightArrow
++-- IllumLtYellowRightArrow
++-- IllumLtGreenRightArrow
++-- IllumLtFlshngRedRightArrow
++-- IllumLtFlshngYellowRightArrow
+
+Signal choices:
+
+Confidence
+0 invalid
+1 highly speculative
+2 speculative
+3 confident
+
+Signal_Head_Type
+0 Unknown
+1 Other
+2 2-Light
+3 3-Light
+4 4-Light
+5 5-Light
+
+------------------------------------------------------------------------
+
+Name: RoadState
+Id: 0x12
+Length: 8 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- Active_Traffic_Signal_Head_ID ← only one on RoadState for Traffic Light Challenge
++-- Current_Observed_Speed_Limit
++-- Next_Observed_Speed_Limit
++-- Next_Observed_Speed_Limit_Longit
++-- Active_Lane_Number
++-- Left_Lane_Marking_ID
++-- Right_Lane_Marking_ID
++-- LLnDistanceValid
++-- DistToLLnEdge
++-- RLnDistanceValid
++-- DistToRLnEdge
+
+Signal choices:
+
+LLnDistanceValid
+0 Valid
+1 Invalid
+
+RLnDistanceValid
+0 Valid
+1 Invalid
+
+------------------------------------------------------------------------
+
+Name: Object_TrackA
+Id: 0x21
+Length: 8 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- ObjObjectID
++-- ObjObjectType
++-- LongPos
++-- LatPos
++-- RelLongVel
++-- RelLatVel
++-- Confidence
++-- Relative_Lane
+
+Signal choices:
+
+ObjObjectType
+0 Unknown
+1 4 Wheel Vehicle (car, small trk)
+2 Large vehicle (semi)
+3 motocycle / bicycle
+4 pedestrian
+5 fixed object / barricade
+6 animal
+7 Automatic Gate / Railroad
+
+Confidence
+0 invalid
+1 highly speculative
+2 speculative
+3 confident
+
+Relative_Lane
+0 Unknown
+1 Host Lane
+2 Opposing Lane
+3 Left Shoulder
+4 Left Lane
+5 Right Lane
+6 Right Shoulder
+7 Overhead
+8 Off Road
+9 Rightbound Cross Traffic Lane
+10 Leftbound Cross Traffic Lane
+
+------------------------------------------------------------------------
+
+Highway Challenge
+------------------------------------------------------------------------
+
+Name: RoadState
+Id: 0x12
+Length: 8 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- Active_Traffic_Signal_Head_ID
++-- Current_Observed_Speed_Limit
++-- Next_Observed_Speed_Limit
++-- Next_Observed_Speed_Limit_Longit
++-- Active_Lane_Number
++-- Left_Lane_Marking_ID
++-- Right_Lane_Marking_ID
++-- LLnDistanceValid
++-- DistToLLnEdge
++-- RLnDistanceValid
++-- DistToRLnEdge
+
+Signal choices:
+
+LLnDistanceValid
+0 Valid
+1 Invalid
+
+RLnDistanceValid
+0 Valid
+1 Invalid
+
+------------------------------------------------------------------------
+
+Name: VehicleLocation
+Id: 0x14
+Length: 10 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- VehicleLatitude
++-- VehicleLongitude
+
+------------------------------------------------------------------------
+
+Name: Object_TrackA
+Id: 0x21
+Length: 8 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- ObjObjectID
++-- ObjObjectType
++-- LongPos
++-- LatPos
++-- RelLongVel
++-- RelLatVel
++-- Confidence
++-- Relative_Lane
+
+Signal choices:
+
+ObjObjectType
+0 Unknown
+1 4 Wheel Vehicle (car, small trk)
+2 Large vehicle (semi)
+3 motocycle / bicycle
+4 pedestrian
+5 fixed object / barricade
+6 animal
+7 Automatic Gate / Railroad
+
+Confidence
+0 invalid
+1 highly speculative
+2 speculative
+3 confident
+
+Relative_Lane
+0 Unknown
+1 Host Lane
+2 Opposing Lane
+3 Left Shoulder
+4 Left Lane
+5 Right Lane
+6 Right Shoulder
+7 Overhead
+8 Off Road
+9 Rightbound Cross Traffic Lane
+10 Leftbound Cross Traffic Lane
+
+------------------------------------------------------------------------
+
+Name: TrafficSign_TrackA
+Id: 0x41
+Length: 7 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- SignObjectID
++-- Confidence
++-- LongPos
++-- Height_Above_Ground
++-- LatPos
++-- Sign_Type
++-- Sign_Value
+
+Signal choices:
+
+Confidence
+0 invalid
+1 highly speculative
+2 speculative
+3 confident
+
+Sign_Type
+0 Unknown
+1 Speed Limit (MPH)
+2 Speed Limit (KPH)
+3 Stop
+4 Yield
+5 No Left Turn
+6 No Right Turn
+7 Do Not Enter
+8 Left Turn Only
+9 Right Turn Only
+10 Railroad Crossing
+11 Crosswalk
+12 No Turn On Red
+13 No U-Turn
+14 One Way (Left)
+15 One Way (Right)
+16 No Parking
+17 Handicap Parking
+
+------------------------------------------------------------------------
+
+Name: LimitLine_TrackA
+Id: 0x61
+Length: 6 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Relative_Lane
+0 Unknown
+1 Host Lane
+3 Left Shoulder
+4 Left Lane
+5 Right Lane
+6 Right Shoulder
+7 Overhead
+
+------------------------------------------------------------------------
+
+Name: LaneMarking_TrackA
+Id: 0x51
+Length: 8 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- LaneMarkingID
++-- LaneMarkingLnHdngTngtV
++-- LaneMarkingLnDstV
++-- LaneMarkingLnDst
++-- LaneMarkingLnHdngTngt
++-- LaneMarkingLnCrvt
++-- LaneMarkingLnCrvtGrad
++-- LaneMarkingLnCrvtV
++-- LaneMarkingLnCrvtGradV
++-- LaneMarkingColor
++-- LaneMarkingLnMrkrTyp
++-- LaneMarkingLnQltyConfLvl
+
+Signal choices:
+
+LaneMarkingLnHdngTngtV
+0 Valid
+1 Invalid
+
+LaneMarkingLnDstV
+0 Valid
+1 Invalid
+
+LaneMarkingLnCrvtV
+0 Valid
+1 Invalid
+
+LaneMarkingLnCrvtGradV
+0 Valid
+1 Invalid
+
+LaneMarkingColor
+0 Unknown
+1 White
+2 Yellow
+3 Other
+
+LaneMarkingLnMrkrTyp
+0 None
+1 Solid
+2 Dashed
+3 Dotted
+4 Botts Dots
+5 Double
+6 Road Edge
+
+------------------------------------------------------------------------
+
+Name: LimitLines
+Id: 0x60
+Length: 3 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- Current_Limit_Line_Count
++-- Observation_Time_of_Hour
+
+------------------------------------------------------------------------
+
+Dynamic Object Challenge
+Name: TrafficSign_TrackA
+Id: 0x41
+Length: 7 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- SignObjectID
++-- Confidence
++-- LongPos
++-- Height_Above_Ground
++-- LatPos
++-- Sign_Type
++-- Sign_Value
+
+Signal choices:
+
+Confidence
+0 invalid
+1 highly speculative
+2 speculative
+3 confident
+
+Sign_Type
+0 Unknown
+1 Speed Limit (MPH)
+2 Speed Limit (KPH)
+3 Stop
+4 Yield
+5 No Left Turn
+6 No Right Turn
+7 Do Not Enter
+8 Left Turn Only
+9 Right Turn Only
+10 Railroad Crossing
+11 Crosswalk
+12 No Turn On Red
+13 No U-Turn
+14 One Way (Left)
+15 One Way (Right)
+16 No Parking
+17 Handicap Parking
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+Name: VehicleOrientation
+Id: 0x13
+Length: 1 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- UNUSED_MSG_PLACEHOLDER
+
+------------------------------------------------------------------------
+
+Name: Objects
+Id: 0x20
+Length: 3 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- Current_Object_Count
++-- Observation_Time_of_Hour
+
+------------------------------------------------------------------------
+
+Name: Object_TrackB
+Id: 0x22
+Length: 5 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- ObjObjectID
++-- Width
++-- Height
++-- Object_Relative_Orientation
++-- Object_Source_Camera
++-- Object_Source_Radar
++-- Object_Source_Ultrasonic
++-- Object_Source_V2X
++-- Object_Source_Lidar
++-- Object_Source_Other
++-- RelLnPosition
+
+Signal choices:
+
+Object_Source_Camera
+0 false
+1 true
+
+Object_Source_Radar
+0 false
+1 true
+
+Object_Source_Ultrasonic
+0 false
+1 true
+
+Object_Source_V2X
+0 false
+1 true
+
+Object_Source_Lidar
+0 false
+1 true
+
+Object_Source_Other
+0 false
+1 true
+
+------------------------------------------------------------------------
+
+Name: Object_TrackC
+Id: 0x23
+Length: 8 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- ObjObjectID
++-- Object_Latitude
++-- Object_Absolute_Velocity
++-- Object_Course
++-- DynProp
+
+Signal choices:
+
+DynProp
+0 Unknown
+1 Has never moved
+2 Has moved but currently stopped
+3 Moving in same direction as host
+4 Moving in opposite direction
+
+------------------------------------------------------------------------
+
+Name: Object_TrackD
+Id: 0x24
+Length: 5 bytes
+Cycle time: - ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- ObjObjectID
++-- Object_Longitude
+
+------------------------------------------------------------------------
+
+Name: TrafficSigns
+Id: 0x40
+Length: 3 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- Current_Sign_Count
++-- Observation_Time_of_Hour
+
+------------------------------------------------------------------------
+
+Name: LaneMarkings
+Id: 0x50
+Length: 3 bytes
+Cycle time: 100 ms
+Senders: ADC
+Layout:
+
+Signal tree:
+
+-- {root}
++-- Rolling_Count
++-- CurrentLaneMarkingCount
++-- Observation_Time_of_Hour
+
