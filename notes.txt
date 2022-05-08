@@ -1,0 +1,128 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@f1engine 
+queens-autodrive
+/
+canbus
+Private
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+canbus/notes.txt
+@necm77
+necm77 added new test files and notes
+Latest commit 93732a7 on 30 Jan
+ History
+ 1 contributor
+87 lines (76 sloc)  2.82 KB
+  
+Signals Needed:
+
+
+- Traffic Light Challenge
+    -- Traffic Signal Head Transition Recognition
+& Latency
+        --- Illuminated Light [Color] [Shape] (==)
+    -- Traffic Signal Head Color Accuracy
+        --- Illuminated Light [Color] [Shape] (==)
+    -- Traffic Signal Head Relative Position 
+        --- Lateral Position (± 2m)
+        --- Longitudinal Position (± 2m)
+        --- Height Above Ground (± 2m)
+    -- Relevant Traffic Signal Head Identification
+        --- Active Traffic Signal Head ID (==) 
+    -- Lane Blockage Observation 
+        --- Object Type (==)
+        --- Relative Lane (==)
+        --- Dynamic Property (==)
+        --- Lateral Position (± 2m)
+        --- Longitudinal Position (± 2m)
+        --- Object Width/Height (± 1m)
+
+- Highway Challenge
+    -- Object Identification
+        --- Object Type (==)
+        --- Relative Lane (==)
+        --- Dynamic Property (==)
+        --- Lateral Position (± 2m)
+        --- Longitudinal Position (± 2m)
+        --- Object Width/Height (± 1m)
+    -- Limit Line Identification 
+        --- Relative Lane (==)
+        --- Lateral Position (± 2m)
+        --- LeadingEdge_Longitudinal Position (± 0.5m)
+    -- Sign Identification
+        --- Sign Type (==)
+        --- Sign Value (==)
+    -- Sign Relative Position 
+        --- Lateral Position (± 2m)
+        --- Longitudinal Position (± 2m)
+        --- NextObservedSpeedLimit (==)
+        --- NextObservedSpeedLimit_Longit (± 2m)
+    -- Lane Position
+        --- Lane Marking Color (==)
+        --- Lane Marking Type (==)
+        --- Distance to Edge (± 0.1m - 0.5m)
+        --- LeftLaneMarkingID == LaneLine ID
+        --- RightLaneMarkingID == LaneLine ID
+
+- Dynamic Object Challenge (Vehicle)
+    -- Object X/Y Distance 
+        --- Object Relative Lateral Position (± 2 m)
+        --- Object Relative Longitudinal Position (± 2 m)
+        --- Relative Lane (==)
+    -- Object Direction of Travel 
+        --- Dynamic Property (==)
+        --- Object Course (± 30°)
+    -- Object Relative Velocity
+        --- Object Relative Lateral Velocity (± 1 m/s)
+        --- Object Relative Longitudinal Velocity (± 1 m/s)
+    -- Object Real Velocity 
+        --- Object Absolute Velocity (± 1 m/s)
+    -- Object Type
+        --- Object Type (==)
+
+- Dynamic Object Challenge (Pedestrian/Animal)
+    -- Object X/Y Distance 
+        --- Object Relative Lateral Position (± 1 m)
+        --- Object Relative Longitudinal Position (± 1 m)
+        --- Relative Lane (==)
+    -- Object Direction of Travel 
+        --- Dynamic Property (==)
+        --- Object Course (± 30°)
+    -- Object Relative Velocity
+        --- Object Relative Lateral Velocity (± 1 m/s)
+        --- Object Relative Longitudinal Velocity (± 1 m/s)
+    -- Object Real Velocity 
+        --- Object Absolute Velocity (± 1 m/s)
+    -- Object Type
+        --- Object Type (==)
+
+
+
+
+
+
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
